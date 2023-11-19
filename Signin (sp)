@@ -1,0 +1,411 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'signinap_model.dart';
+export 'signinap_model.dart';
+
+class SigninapWidget extends StatefulWidget {
+  const SigninapWidget({Key? key}) : super(key: key);
+
+  @override
+  _SigninapWidgetState createState() => _SigninapWidgetState();
+}
+
+class _SigninapWidgetState extends State<SigninapWidget> {
+  late SigninapModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SigninapModel());
+
+    _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
+
+    _model.textController3 ??= TextEditingController();
+    _model.textFieldFocusNode3 ??= FocusNode();
+
+    _model.textController4 ??= TextEditingController();
+    _model.textFieldFocusNode4 ??= FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          top: true,
+          child: Align(
+            alignment: AlignmentDirectional(0.00, 0.00),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    'Create account',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          color: Color(0xFF1F4690),
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600,
+                        ),
+                  ),
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              child: TextFormField(
+                                controller: _model.textController1,
+                                focusNode: _model.textFieldFocusNode1,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Color(0xFF1F4690),
+                                      ),
+                                  alignLabelWithHint: false,
+                                  hintText: 'Name',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF1F4690),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                validator: _model.textController1Validator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                              child: TextFormField(
+                                controller: _model.textController2,
+                                focusNode: _model.textFieldFocusNode2,
+                                autofocus: true,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Color(0xFF1F4690),
+                                      ),
+                                  alignLabelWithHint: false,
+                                  hintText: 'Age',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: Colors.black,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Color(0xFF1F4690),
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                validator: _model.textController2Validator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                        child: TextFormField(
+                          controller: _model.textController3,
+                          focusNode: _model.textFieldFocusNode3,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Color(0xFF1F4690),
+                                ),
+                            alignLabelWithHint: false,
+                            hintText: 'Work location',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF1F4690),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          validator: _model.textController3Validator
+                              .asValidator(context),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                        child: TextFormField(
+                          controller: _model.textController4,
+                          focusNode: _model.textFieldFocusNode4,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Color(0xFF1F4690),
+                                ),
+                            alignLabelWithHint: false,
+                            hintText: 'phone',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF1F4690),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Readex Pro',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                          validator: _model.textController4Validator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ].divide(SizedBox(height: 30)),
+                  ),
+                  FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
+                    },
+                    text: 'Sign in',
+                    options: FFButtonOptions(
+                      width: 336,
+                      height: 54,
+                      padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                      iconPadding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
+                      color: Color(0xFF1F4690),
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Inter',
+                                color: Colors.white,
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                      elevation: 3,
+                      borderSide: BorderSide(
+                        color: Color(0xFF1F4690),
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Have already an account? ',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Text(
+                        'log in',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Readex Pro',
+                              color: Color(0xFFE8AA42),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
