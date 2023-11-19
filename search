@@ -1,0 +1,365 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'search_model.dart';
+export 'search_model.dart';
+
+class SearchWidget extends StatefulWidget {
+  const SearchWidget({Key? key}) : super(key: key);
+
+  @override
+  _SearchWidgetState createState() => _SearchWidgetState();
+}
+
+class _SearchWidgetState extends State<SearchWidget> {
+  late SearchModel _model;
+
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => SearchModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _model.dispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (isiOS) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          statusBarBrightness: Theme.of(context).brightness,
+          systemStatusBarContrastEnforced: true,
+        ),
+      );
+    }
+
+    return GestureDetector(
+      onTap: () => _model.unfocusNode.canRequestFocus
+          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+          : FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: true,
+          leading: Container(
+            width: 120,
+            height: 120,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: Image.asset(
+              'assets/images/phfuc_l.PNG',
+              fit: BoxFit.cover,
+            ),
+          ),
+          actions: [
+            Icon(
+              Icons.wechat_outlined,
+              color: Colors.black,
+              size: 40,
+            ),
+          ],
+          centerTitle: true,
+          elevation: 0,
+        ),
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: Color(0x351F4690),
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.home_outlined,
+                      color: Colors.black,
+                      size: 40,
+                    ),
+                  ),
+                  Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.black,
+                    size: 40,
+                  ),
+                  Icon(
+                    Icons.notifications_none,
+                    color: Colors.black,
+                    size: 40,
+                  ),
+                  Icon(
+                    Icons.add,
+                    color: Colors.black,
+                    size: 40,
+                  ),
+                  Icon(
+                    Icons.menu,
+                    color: Colors.black,
+                    size: 40,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Icon(
+                      Icons.search,
+                      color: Color(0xFF1F4690),
+                      size: 30,
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(8, 0, 8, 0),
+                        child: TextFormField(
+                          controller: _model.textController,
+                          focusNode: _model.textFieldFocusNode,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Color(0xFF1F4690),
+                                ),
+                            alignLabelWithHint: false,
+                            hintText: 'Search for person, job title, .......',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: Color(0x59000000),
+                                  fontSize: 16,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF1F4690),
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                          validator: _model.textControllerValidator
+                              .asValidator(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.location_pin,
+                      color: Color(0xC7000000),
+                      size: 30,
+                    ),
+                    Text(
+                      'Egypt,on',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            color: Color(0xC814181B),
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                thickness: 2,
+                color: Color(0xA9000000),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image.network(
+                        'https://picsum.photos/seed/961/600',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Esraa Gamal',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                        ),
+                        Text(
+                          '24 h',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ].divide(SizedBox(width: 10)),
+                ),
+              ),
+              Text(
+                'I need some one who can help me cleaning my house.\nday:  tuesday 3/18/2024.\nfor: 15 \$',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                    ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Icon(
+                      Icons.my_location_outlined,
+                      color: FlutterFlowTheme.of(context).secondaryText,
+                      size: 24,
+                    ),
+                    Text(
+                      'ADD: 123 ABDELAZIZ STREET ,CAIRO, EGYPT.',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                          ),
+                    ),
+                  ],
+                ),
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  'assets/images/hire.PNG',
+                  width: 395,
+                  height: 235,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Divider(
+                thickness: 2,
+                color: Color(0xA9000000),
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.favorite_border,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24,
+                      ),
+                      Text(
+                        'Like',
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.message_outlined,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24,
+                      ),
+                      Text(
+                        'Comment',
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Icon(
+                        Icons.share_sharp,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24,
+                      ),
+                      Text(
+                        'Share',
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ].divide(SizedBox(height: 10)),
+          ),
+        ),
+      ),
+    );
+  }
+}
